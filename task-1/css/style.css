@@ -5,7 +5,6 @@
 }
 
 .container {
-  padding: 20px;
   width: 1440px;
   height: 100%;
   margin: 0 auto;
@@ -13,10 +12,13 @@
 
 .header {
   margin-bottom: 20px;
+  position: fixed;
+  top: 0;
 }
 
 .main {
   position: relative;
+  width: 100vw;
 }
 
 .main-intro {
@@ -37,6 +39,7 @@
   top: 0;
   left: 0;
   background-color: #fff;
+  width: 100%;
 }
 
 .main-left {

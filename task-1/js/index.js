@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
       markers: true,
       scrub: true,
       start: "-30% center",
-      end: "+=300px",
+      end: "+=1000px",
     },
     left: "100%",
   });

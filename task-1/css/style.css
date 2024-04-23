@@ -36,8 +36,8 @@
   display: flex;
   gap: 20px;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 70vh;
+  right: -100%;
   background-color: #fff;
   width: 100%;
 }

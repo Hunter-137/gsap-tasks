@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     rightTitle +
     rightText +
     rightImgItem * 3 +
-    20 -
+    20 + 34  -
     leftImgItem;
   console.log(calcHeight);
 
@@ -102,12 +102,21 @@ document.addEventListener("DOMContentLoaded", function () {
   tl.to(".main-content-desc-right._2", {
     y: -calcHeight,
     onComplete: () => {
-      onCompleteBg[1].classList.add("_active");
       contentDescLeft[1].classList.add("_close");
+      onCompleteBg[1].classList.add("_active");
     },
     onReverseComplete: () => {
       onCompleteBg[1].classList.remove("_active");
-      contentDescRight[1].classList.remove("_close");
+      contentDescLeft[1].classList.remove("_close");
+    }
+  });
+
+  tl.to(".main-content-desc-right._2", {
+    onComplete: () => {
+      contentDescLeft[1].classList.add("_close");
+    },
+    onReverseComplete: () => {
+      contentDescLeft[1].classList.remove("_close");
     }
   });
 

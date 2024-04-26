@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     rightTitle +
     rightText +
     rightImgItem * 3 +
-    20 + 34  -
+    20 + 34 + 10  -
     leftImgItem;
   console.log(calcHeight);
 
@@ -56,20 +56,13 @@ document.addEventListener("DOMContentLoaded", function () {
     scrollTrigger: {
       trigger: ".main-content",
       scrub: true,
-      markers: true,
+      // markers: true,
       start: "top top",
       end: "bottom+=3000vh top",
       pin: true,
       ease: "none",
     },
   });
-
-  // contentDescWrapper.forEach(block, item => {
-  //   tl.to(block, {
-  //     xPercent: -100,
-  //   })
-
-  // });
 
   tl.to(".main-content-desc-wrapper._1", {
     xPercent: -100,
@@ -119,13 +112,4 @@ document.addEventListener("DOMContentLoaded", function () {
       contentDescLeft[1].classList.remove("_close");
     }
   });
-
-  // tl.to(".main-content-desc-right._2", {
-  //   onComplete: () => {
-  //     contentDescLeft[1].classList.add("_close");
-  //   },
-  //   onLeave: () => {
-  //     contentDescRight[1].classList.remove("_close");
-  //   }
-  // });
 });

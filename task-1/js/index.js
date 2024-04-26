@@ -25,10 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log(calcHeight);
 
   const contentDescWrapper = Array.from(document.querySelectorAll(".main-content-desc-wrapper"));
-  const contentDescLeft = Array.from(document.querySelectorAll(".main-content-desc-left"));
-  const contentDescRight = Array.from(document.querySelectorAll(".main-content-desc-right"));
-  console.log(contentDescWrapper);
-  console.log(contentDescRight);
+  const contentDescLeftBlock = Array.from(document.querySelectorAll(".main-content-desc-left"));
+  const contentDescRightBlock = Array.from(document.querySelectorAll(".main-content-desc-right"));
+  const contentDescLeftItemImg = Array.from(document.querySelectorAll(".main-content-desc-left__item"));
 
   const onCompleteBg = document.querySelectorAll(".main-content-desc-left__bg");
 
@@ -64,52 +63,84 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  tl.to(".main-content-desc-wrapper._1", {
-    xPercent: -100,
+  contentDescWrapper.forEach((wrapper, index) => {
+    tl.to(wrapper, {
+      xPercent: -100,
+    });
+
+    tl.to(contentDescLeftItemImg[index], {
+      clipPath: "inset(0 0 0 0%)",
+      scale: 1,
+    }, "<");
+
+    tl.to(contentDescRightBlock[index], {
+      y: -calcHeight,
+      onComplete: () => {
+        onCompleteBg[index].classList.add("_active");
+      },
+      onReverseComplete: () => {
+        onCompleteBg[index].classList.remove("_active");
+      }
+    });
   });
 
-  tl.to(".main-content-desc-left__item._1", {
-    clipPath: "inset(0 0 0 0%)",
-    scale: 1,
-  }, "<");
+  console.log(contentDescLeftBlock.length)
 
-  tl.to(".main-content-desc-right._1", {
-    y: -calcHeight,
+  tl.to(contentDescRightBlock[contentDescRightBlock.length - 1], {
     onComplete: () => {
-      onCompleteBg[0].classList.add("_active");
+      contentDescLeftBlock[contentDescLeftBlock.length - 1].classList.add("_close");
     },
     onReverseComplete: () => {
-      onCompleteBg[0].classList.remove("_active");
+      contentDescLeftBlock[contentDescLeftBlock.length - 1].classList.remove("_close");
     }
   });
 
-  tl.to(".main-content-desc-wrapper._2", {
-    xPercent: -100,
-  });
+  // tl.to(".main-content-desc-wrapper._1", {
+  //   xPercent: -100,
+  // });
 
-  tl.to(".main-content-desc-left__item._2", {
-    clipPath: "inset(0 0 0 0%)",
-    scale: 1,
-  }, "<");
+  // tl.to(".main-content-desc-left__item._1", {
+  //   clipPath: "inset(0 0 0 0%)",
+  //   scale: 1,
+  // }, "<");
 
-  tl.to(".main-content-desc-right._2", {
-    y: -calcHeight,
-    onComplete: () => {
-      contentDescLeft[1].classList.add("_close");
-      onCompleteBg[1].classList.add("_active");
-    },
-    onReverseComplete: () => {
-      onCompleteBg[1].classList.remove("_active");
-      contentDescLeft[1].classList.remove("_close");
-    }
-  });
+  // tl.to(".main-content-desc-right._1", {
+  //   y: -calcHeight,
+  //   onComplete: () => {
+  //     onCompleteBg[0].classList.add("_active");
+  //   },
+  //   onReverseComplete: () => {
+  //     onCompleteBg[0].classList.remove("_active");
+  //   }
+  // });
 
-  tl.to(".main-content-desc-right._2", {
-    onComplete: () => {
-      contentDescLeft[1].classList.add("_close");
-    },
-    onReverseComplete: () => {
-      contentDescLeft[1].classList.remove("_close");
-    }
-  });
+  // tl.to(".main-content-desc-wrapper._2", {
+  //   xPercent: -100,
+  // });
+
+  // tl.to(".main-content-desc-left__item._2", {
+  //   clipPath: "inset(0 0 0 0%)",
+  //   scale: 1,
+  // }, "<");
+
+  // tl.to(".main-content-desc-right._2", {
+  //   y: -calcHeight,
+  //   onComplete: () => {
+  //     contentDescLeft[1].classList.add("_close");
+  //     onCompleteBg[1].classList.add("_active");
+  //   },
+  //   onReverseComplete: () => {
+  //     onCompleteBg[1].classList.remove("_active");
+  //     contentDescLeft[1].classList.remove("_close");
+  //   }
+  // });
+
+  // tl.to(".main-content-desc-right._2", {
+  //   onComplete: () => {
+  //     contentDescLeft[1].classList.add("_close");
+  //   },
+  //   onReverseComplete: () => {
+  //     contentDescLeft[1].classList.remove("_close");
+  //   }
+  // });
 });

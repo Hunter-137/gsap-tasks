@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
       scrub: true,
       // markers: true,
       start: "top top",
-      end: "bottom+=5000vh top",
+      end: "bottom+=10000vh top",
       pin: true,
       ease: "none",
     },

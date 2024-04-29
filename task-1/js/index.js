@@ -14,42 +14,51 @@ document.addEventListener("DOMContentLoaded", function () {
   const rightImgItem = document.querySelector(
     ".main-content-desc-right__item"
   ).offsetHeight;
+  const rightBlock = document.querySelector(
+    ".main-content-desc-right"
+  ).offsetHeight;
 
-  const calcHeight =
-    rightSubtitle +
-    rightTitle +
-    rightText +
-    rightImgItem * 3 +
-    20 + 34 + 10  -
-    leftImgItem;
+  const calcHeight = rightBlock - leftImgItem - 11;
   console.log(calcHeight);
 
-  const contentDescWrapper = Array.from(document.querySelectorAll(".main-content-desc-wrapper"));
-  const contentDescLeftBlock = Array.from(document.querySelectorAll(".main-content-desc-left"));
-  const contentDescRightBlock = Array.from(document.querySelectorAll(".main-content-desc-right"));
-  const contentDescLeftItemImg = Array.from(document.querySelectorAll(".main-content-desc-left__item"));
+  const contentDescWrapper = Array.from(
+    document.querySelectorAll(".main-content-desc-wrapper")
+  );
+  const contentDescLeftBlock = Array.from(
+    document.querySelectorAll(".main-content-desc-left")
+  );
+  const contentDescRightBlock = Array.from(
+    document.querySelectorAll(".main-content-desc-right")
+  );
+  const contentDescLeftItemImg = Array.from(
+    document.querySelectorAll(".main-content-desc-left__item")
+  );
 
   const onCompleteBg = document.querySelectorAll(".main-content-desc-left__bg");
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const introScale = gsap.timeline({
+  const tlIntroScale = gsap.timeline({
     scrollTrigger: {
       trigger: ".main-content-intro",
       // markers: true,
       start: "top bottom",
-      end: "top+=50% bottom",
+      end: "bottom bottom",
       scrub: true,
-    }
+    },
   });
 
-  introScale.to(".main-content-intro__item", {
+  tlIntroScale.to(".main-content-intro__item", {
     scale: 1,
-  })
-  
-  introScale.to(".main-content-intro", {
-    scale: 1,
-  },"<")
+  });
+
+  tlIntroScale.to(
+    ".main-content-intro",
+    {
+      scale: 1,
+    },
+    "<"
+  );
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -57,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
       scrub: true,
       // markers: true,
       start: "top top",
-      end: "bottom+=3000vh top",
+      end: "bottom+=40000 top",
       pin: true,
       ease: "none",
     },
@@ -68,10 +77,21 @@ document.addEventListener("DOMContentLoaded", function () {
       xPercent: -100,
     });
 
-    tl.to(contentDescLeftItemImg[index], {
-      clipPath: "inset(0 0 0 0%)",
-      scale: 1,
-    }, "<");
+    tl.to(
+      contentDescLeftBlock[index],
+      {
+        clipPath: "inset(0 0 0 0%)",
+      },
+      "<"
+    );
+
+    tl.to(
+      contentDescLeftItemImg[index],
+      {
+        scale: 1,
+      },
+      "<"
+    );
 
     tl.to(contentDescRightBlock[index], {
       y: -calcHeight,
@@ -80,19 +100,14 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       onReverseComplete: () => {
         onCompleteBg[index].classList.remove("_active");
-      }
+      },
     });
   });
 
-  console.log(contentDescLeftBlock.length)
+  console.log(contentDescLeftBlock.length);
 
-  tl.to(contentDescRightBlock[contentDescRightBlock.length - 1], {
-    onComplete: () => {
-      contentDescLeftBlock[contentDescLeftBlock.length - 1].classList.add("_close");
-    },
-    onReverseComplete: () => {
-      contentDescLeftBlock[contentDescLeftBlock.length - 1].classList.remove("_close");
-    }
+  tl.to(contentDescLeftBlock[contentDescLeftBlock.length - 1], {
+    flex: "0 0 101%",
   });
 
   // tl.to(".main-content-desc-wrapper._1", {

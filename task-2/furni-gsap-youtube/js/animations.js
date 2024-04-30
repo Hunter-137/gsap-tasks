@@ -332,7 +332,7 @@ if (laptopScreen.matches) {
         scrollTrigger: {
             trigger: ".section__testimonials",
             start: "0 center",
-            end: "+=150",
+            end: "+=250",
             scrub: true,
         },
        css: {

@@ -528,6 +528,7 @@ body.locked {
   height: auto;
   display: block;
   margin: 0 auto;
+  object-fit: cover;
 }
 
 .why {
@@ -877,6 +878,7 @@ body.locked {
   max-width: 100%;
   width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
 .blog__title {
@@ -903,6 +905,7 @@ body.locked {
 .section__subscribe {
   background: #ffffff;
   padding: 100px 0 130px 0;
+  overflow-x: clip;
 }
 
 .subscribe {

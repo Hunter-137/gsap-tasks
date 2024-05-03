@@ -14,13 +14,14 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 99999;
   background-color: #fff;
   width: 100%;
   height: 50px;
 }
 
-.header__logo {
-  padding: 10px;
+.header__title {
+  text-align: center;
 }
 
 .main {
@@ -34,12 +35,12 @@
   height: 100%;
 }
 
-.main-list-bg {
+.main-bg-list {
   width: 100%;
   height: 100%;
 }
 
-.main-list-bg__item {
+.main-bg-list__item {
   width: 100%;
   height: 100%;
   filter: brightness(0.3);

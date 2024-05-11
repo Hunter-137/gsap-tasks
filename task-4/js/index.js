@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
       start: "top top",
       end: "bottom top",
       pin: true,
-      scrub: 1,
+      scrub: 3,
     },
   });
 
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   tl.to(locationListWithoutFirst, {
     yPercent: -55,
-  })
+  });
 
   tl.to(locationImgWrapper[0], {
     clipPath: "circle(0% at 50% 50%)",
@@ -96,18 +96,354 @@ document.addEventListener("DOMContentLoaded", () => {
     "<"
   );
 
-  tl.to(locationList[1], {
-    yPercent: -100,
-    duration: 2,
-  }, "<");
+  // tl.to(
+  //   locationList[1],
+  //   {
+  //     yPercent: -110,
+  //     duration: 2,
+  //   },
+  //   "<"
+  // );
 
-  tl.to(locationImgHiderBg[1], {
-    clipPath: "circle(0% at 50% 50%)",
-  }, "<");
+  // tl.to(
+  //   locationImgWrapper[1],
+  //   {
+  //     clipPath: "circle(15% at 50% 50%)",
+  //     duration: 2,
+  //   },
+  //   "<"
+  // );
 
-  tl.to(locationImgWrapper[1], {
-    clipPath: "circle(15% at 50% 50%)",
-    duration: 2,
-  }, "<");
-  
+  // tl.to(
+  //   locationImgHiderBg[1],
+  //   {
+  //     clipPath: "circle(0% at 50% 50%)",
+  //     duration: 1,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(locationMinutes[1], {
+  //   opacity: 1,
+  // });
+
+  // tl.to(
+  //   locationTextName[1],
+  //   {
+  //     opacity: 1,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(locationImgWrapper[1], {
+  //   clipPath: "circle(0% at 50% 50%)",
+  //   duration: 2,
+  // });
+
+  // tl.to(
+  //   locationImgWrapper[1],
+  //   {
+  //     yPercent: -50,
+  //     duration: 2,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationMinutes[1],
+  //   {
+  //     opacity: 0,
+  //     yPercent: -10,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationTextName[1],
+  //   {
+  //     opacity: 0,
+  //     yPercent: -10,
+  //   },
+  //   "<"
+  // );
+
+  // *******************************************************************
+  locationImgWrapper.forEach((elem, index) => {
+    tl.to(
+      locationList[index],
+      {
+        yPercent: -110,
+        duration: 5,
+      },
+      "<"
+    );
+    tl.to(
+      elem,
+      {
+        clipPath: "circle(15% at 50% 50%)",
+        duration: 5,
+      },
+      "<"
+    );
+    tl.to(
+      locationImgHiderBg[index],
+      {
+        clipPath: "circle(0% at 50% 50%)",
+        duration: 5,
+      },
+      "<"
+    );
+    tl.to(locationMinutes[index], {
+      opacity: 5,
+    });
+    tl.to(
+      locationTextName[index],
+      {
+        opacity: 5,
+      },
+      "<"
+    );
+    tl.to(elem, {
+      clipPath: "circle(0% at 50% 50%)",
+      duration: 5,
+    });
+    tl.to(
+      elem,
+      {
+        yPercent: -50,
+        duration: 2,
+      },
+      "<"
+    );
+    tl.to(
+      locationMinutes[index],
+      {
+        opacity: 0,
+        yPercent: -10,
+      },
+      "<"
+    );
+    tl.to(
+      locationTextName[index],
+      {
+        opacity: 0,
+        yPercent: -10,
+      },
+      "<"
+    );
+  });
+  // *******************************************************************
+
+  // tl.to(
+  //   locationList[2],
+  //   {
+  //     yPercent: -110,
+  //     duration: 2,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationImgWrapper[2],
+  //   {
+  //     clipPath: "circle(15% at 50% 50%)",
+  //     duration: 2,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationImgHiderBg[2],
+  //   {
+  //     clipPath: "circle(0% at 50% 50%)",
+  //     duration: 1,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(locationMinutes[2], {
+  //   opacity: 1,
+  // });
+
+  // tl.to(
+  //   locationTextName[2],
+  //   {
+  //     opacity: 1,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(locationImgWrapper[2], {
+  //   clipPath: "circle(0% at 50% 50%)",
+  //   duration: 2,
+  // });
+
+  // tl.to(
+  //   locationImgWrapper[2],
+  //   {
+  //     yPercent: -50,
+  //     duration: 2,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationMinutes[2],
+  //   {
+  //     opacity: 0,
+  //     yPercent: -10,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationTextName[2],
+  //   {
+  //     opacity: 0,
+  //     yPercent: -10,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationList[3],
+  //   {
+  //     yPercent: -110,
+  //     duration: 2,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationImgWrapper[3],
+  //   {
+  //     clipPath: "circle(15% at 50% 50%)",
+  //     duration: 2,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationImgHiderBg[3],
+  //   {
+  //     clipPath: "circle(0% at 50% 50%)",
+  //     duration: 1,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(locationMinutes[3], {
+  //   opacity: 1,
+  // });
+
+  // tl.to(
+  //   locationTextName[3],
+  //   {
+  //     opacity: 1,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(locationImgWrapper[3], {
+  //   clipPath: "circle(0% at 50% 50%)",
+  //   duration: 2,
+  // });
+
+  // tl.to(
+  //   locationImgWrapper[3],
+  //   {
+  //     yPercent: -50,
+  //     duration: 2,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationMinutes[3],
+  //   {
+  //     opacity: 0,
+  //     yPercent: -10,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationTextName[3],
+  //   {
+  //     opacity: 0,
+  //     yPercent: -10,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationList[4],
+  //   {
+  //     yPercent: -110,
+  //     duration: 2,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationImgWrapper[4],
+  //   {
+  //     clipPath: "circle(15% at 50% 50%)",
+  //     duration: 2,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationImgHiderBg[4],
+  //   {
+  //     clipPath: "circle(0% at 50% 50%)",
+  //     duration: 1,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(locationMinutes[4], {
+  //   opacity: 1,
+  // });
+
+  // tl.to(
+  //   locationTextName[4],
+  //   {
+  //     opacity: 1,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(locationImgWrapper[4], {
+  //   clipPath: "circle(0% at 50% 50%)",
+  //   duration: 2,
+  // });
+
+  // tl.to(
+  //   locationImgWrapper[4],
+  //   {
+  //     yPercent: -50,
+  //     duration: 2,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationMinutes[4],
+  //   {
+  //     opacity: 0,
+  //     yPercent: -10,
+  //   },
+  //   "<"
+  // );
+
+  // tl.to(
+  //   locationTextName[4],
+  //   {
+  //     opacity: 0,
+  //     yPercent: -10,
+  //   },
+  //   "<"
+  // );
 });

@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".main-circle-list-items")
   );
   const locationListWithoutFirst = locationList.slice(1);
+  const locationListItem = Array.from(
+    document.querySelectorAll(".main-bg-list__item")
+  );
   const locationImgWrapper = Array.from(
     document.querySelectorAll(".main-circle-item__wrapper")
   );
@@ -27,74 +30,74 @@ document.addEventListener("DOMContentLoaded", () => {
       start: "top top",
       end: "bottom top",
       pin: true,
-      scrub: 3,
+      scrub: 2,
     },
   });
 
-  tl.to(locationImgWrapper[0], {
-    clipPath: "circle(15% at 50% 40%)",
-    duration: 2,
-  });
+  // tl.to(locationImgWrapper[0], {
+  //   clipPath: "circle(15% at 50% 40%)",
+  //   duration: 2,
+  // });
 
-  tl.to(
-    locationImg[0],
-    {
-      objectPosition: "50% -50%",
-    },
-    "<60%"
-  );
+  // tl.to(
+  //   locationImg[0],
+  //   {
+  //     objectPosition: "50% -50%",
+  //   },
+  //   "<60%"
+  // );
 
-  tl.to(locationImg[0], {
-    scale: 0.85,
-  });
+  // tl.to(locationImg[0], {
+  //   scale: 0.85,
+  // });
 
-  tl.to(locationMinutes[0], {
-    opacity: 1,
-  });
+  // tl.to(locationMinutes[0], {
+  //   opacity: 1,
+  // });
 
-  tl.to(
-    locationTextName[0],
-    {
-      opacity: 1,
-    },
-    "<"
-  );
+  // tl.to(
+  //   locationTextName[0],
+  //   {
+  //     opacity: 1,
+  //   },
+  //   "<"
+  // );
 
-  tl.to(locationListWithoutFirst, {
-    yPercent: -55,
-  });
+  // tl.to(locationListWithoutFirst, {
+  //   yPercent: -55,
+  // });
 
-  tl.to(locationImgWrapper[0], {
-    clipPath: "circle(0% at 50% 50%)",
-    duration: 2,
-  });
+  // tl.to(locationImgWrapper[0], {
+  //   clipPath: "circle(0% at 50% 50%)",
+  //   duration: 2,
+  // });
 
-  tl.to(
-    locationImgWrapper[0],
-    {
-      yPercent: -50,
-      duration: 2,
-    },
-    "<"
-  );
+  // tl.to(
+  //   locationImgWrapper[0],
+  //   {
+  //     yPercent: -50,
+  //     duration: 2,
+  //   },
+  //   "<"
+  // );
 
-  tl.to(
-    locationMinutes[0],
-    {
-      opacity: 0,
-      yPercent: -10,
-    },
-    "<"
-  );
+  // tl.to(
+  //   locationMinutes[0],
+  //   {
+  //     opacity: 0,
+  //     yPercent: -10,
+  //   },
+  //   "<"
+  // );
 
-  tl.to(
-    locationTextName[0],
-    {
-      opacity: 0,
-      yPercent: -10,
-    },
-    "<"
-  );
+  // tl.to(
+  //   locationTextName[0],
+  //   {
+  //     opacity: 0,
+  //     yPercent: -10,
+  //   },
+  //   "<"
+  // );
 
   // tl.to(
   //   locationList[1],
@@ -169,68 +172,194 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // *******************************************************************
   locationImgWrapper.forEach((elem, index) => {
-    tl.to(
-      locationList[index],
-      {
-        yPercent: -110,
+    if (index === locationImgWrapper.length - 1) {
+      tl.to(locationListItem[index], {
+        onStart: () => {
+          locationListItem[index].classList.add("active");
+          console.log("start");
+        },
+        // onComplete: () => {
+        //   locationListItem[index - 1].classList.remove("active");
+        // }
+      });
+      
+      tl.to(
+        locationList[index],
+        {
+          yPercent: -100,
+          duration: 5,
+        },
+        "<"
+      );
+      tl.to(
+        locationImgWrapper[index],
+        {
+          clipPath: "circle(15% at 50% 50%)",
+          duration: 5,
+        },
+        "<"
+      );
+      tl.to(
+        locationImgHiderBg[index],
+        {
+          clipPath: "circle(0% at 50% 50%)",
+          duration: 5,
+        },
+        "<"
+      );
+      tl.to(locationImgWrapper[index], {
+        clipPath: "circle(77% at 50% 50%)",
         duration: 5,
-      },
-      "<"
-    );
-    tl.to(
-      elem,
-      {
-        clipPath: "circle(15% at 50% 50%)",
-        duration: 5,
-      },
-      "<"
-    );
-    tl.to(
-      locationImgHiderBg[index],
-      {
+      });
+    } else if (index === 0) {
+      tl.to(locationListItem[index], {
+        onStart: () => {
+          locationListItem[index].classList.add("active");
+          console.log("start");
+        },
+        // onComplete: () => {
+        //   locationListItem[index - 1].classList.remove("active");
+        // }
+      });
+
+      tl.to(locationImgWrapper[index], {
+        clipPath: "circle(15% at 50% 40%)",
+        duration: 2,
+      });
+
+      tl.to(
+        locationImg[index],
+        {
+          objectPosition: "50% -50%",
+        },
+        "<60%"
+      );
+
+      tl.to(locationImg[index], {
+        scale: 0.85,
+      });
+
+      tl.to(locationMinutes[index], {
+        opacity: 1,
+      });
+
+      tl.to(
+        locationTextName[index],
+        {
+          opacity: 1,
+        },
+        "<"
+      );
+
+      tl.to(locationListWithoutFirst, {
+        yPercent: -55,
+      });
+
+      tl.to(locationImgWrapper[index], {
+        clipPath: "circle(0% at 50% 50%)",
+        duration: 2,
+      });
+
+      tl.to(
+        locationImgWrapper[index],
+        {
+          yPercent: -50,
+          duration: 2,
+        },
+        "<"
+      );
+
+      tl.to(
+        locationMinutes[index],
+        {
+          opacity: 0,
+          yPercent: -10,
+        },
+        "<"
+      );
+
+      tl.to(
+        locationTextName[index],
+        {
+          opacity: 0,
+          yPercent: -10,
+        },
+        "<"
+      );
+    } else {
+      tl.to(locationListItem[index], {
+        onStart: () => {
+          locationListItem[index].classList.add("active");
+          console.log("start");
+        },
+        // onComplete: () => {
+        //   locationListItem[index - 1].classList.remove("active");
+        // }
+      });
+
+      tl.to(
+        locationList[index],
+        {
+          yPercent: -110,
+          duration: 5,
+        },
+        "<"
+      );
+      tl.to(
+        locationImgWrapper[index],
+        {
+          clipPath: "circle(15% at 50% 50%)",
+          duration: 5,
+        },
+        "<"
+      );
+      tl.to(
+        locationImgHiderBg[index],
+        {
+          clipPath: "circle(0% at 50% 50%)",
+          duration: 5,
+        },
+        "<"
+      );
+      tl.to(locationMinutes[index], {
+        opacity: 1,
+      });
+      tl.to(
+        locationTextName[index],
+        {
+          opacity: 1,
+        },
+        "<"
+      );
+      tl.to(locationImgWrapper[index], {
         clipPath: "circle(0% at 50% 50%)",
         duration: 5,
-      },
-      "<"
-    );
-    tl.to(locationMinutes[index], {
-      opacity: 5,
-    });
-    tl.to(
-      locationTextName[index],
-      {
-        opacity: 5,
-      },
-      "<"
-    );
-    tl.to(elem, {
-      clipPath: "circle(0% at 50% 50%)",
-      duration: 5,
-    });
-    tl.to(
-      elem,
-      {
-        yPercent: -50,
-        duration: 2,
-      },
-      "<"
-    );
-    tl.to(
-      locationMinutes[index],
-      {
-        opacity: 0,
-        yPercent: -10,
-      },
-      "<"
-    );
-    tl.to(
-      locationTextName[index],
-      {
-        opacity: 0,
-        yPercent: -10,
-      },
-      "<"
-    );
+      });
+      tl.to(
+        elem,
+        {
+          yPercent: -50,
+          duration: 2,
+        },
+        "<"
+      );
+      tl.to(
+        locationMinutes[index],
+        {
+          opacity: 0,
+          yPercent: -10,
+        },
+        "<"
+      );
+      tl.to(
+        locationTextName[index],
+        {
+          opacity: 0,
+          yPercent: -10,
+        },
+        "<"
+      );
+    }
   });
   // *******************************************************************
 

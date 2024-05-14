@@ -15,11 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const locationImgHiderBg = Array.from(
     document.querySelectorAll(".main-circle-item__hider-bg")
   );
-  const locationMinutes = Array.from(
-    document.querySelectorAll(".main-circle-item__road-time")
-  );
-  const locationTextName = Array.from(
-    document.querySelectorAll(".main-circle-item__text")
+  const locationSubtitles = Array.from(
+    document.querySelectorAll(".main-circle-item__subtitle")
   );
 
   gsap.registerPlugin(ScrollTrigger);
@@ -28,166 +25,23 @@ document.addEventListener("DOMContentLoaded", () => {
       trigger: ".main",
       // markers: true,
       start: "top top",
-      end: "bottom top",
+      end: "bottom+=5500vh top",
       pin: true,
       scrub: 2,
     },
   });
 
-  // tl.to(locationImgWrapper[0], {
-  //   clipPath: "circle(15% at 50% 40%)",
-  //   duration: 2,
-  // });
-
-  // tl.to(
-  //   locationImg[0],
-  //   {
-  //     objectPosition: "50% -50%",
-  //   },
-  //   "<60%"
-  // );
-
-  // tl.to(locationImg[0], {
-  //   scale: 0.85,
-  // });
-
-  // tl.to(locationMinutes[0], {
-  //   opacity: 1,
-  // });
-
-  // tl.to(
-  //   locationTextName[0],
-  //   {
-  //     opacity: 1,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(locationListWithoutFirst, {
-  //   yPercent: -55,
-  // });
-
-  // tl.to(locationImgWrapper[0], {
-  //   clipPath: "circle(0% at 50% 50%)",
-  //   duration: 2,
-  // });
-
-  // tl.to(
-  //   locationImgWrapper[0],
-  //   {
-  //     yPercent: -50,
-  //     duration: 2,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationMinutes[0],
-  //   {
-  //     opacity: 0,
-  //     yPercent: -10,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationTextName[0],
-  //   {
-  //     opacity: 0,
-  //     yPercent: -10,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationList[1],
-  //   {
-  //     yPercent: -110,
-  //     duration: 2,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationImgWrapper[1],
-  //   {
-  //     clipPath: "circle(15% at 50% 50%)",
-  //     duration: 2,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationImgHiderBg[1],
-  //   {
-  //     clipPath: "circle(0% at 50% 50%)",
-  //     duration: 1,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(locationMinutes[1], {
-  //   opacity: 1,
-  // });
-
-  // tl.to(
-  //   locationTextName[1],
-  //   {
-  //     opacity: 1,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(locationImgWrapper[1], {
-  //   clipPath: "circle(0% at 50% 50%)",
-  //   duration: 2,
-  // });
-
-  // tl.to(
-  //   locationImgWrapper[1],
-  //   {
-  //     yPercent: -50,
-  //     duration: 2,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationMinutes[1],
-  //   {
-  //     opacity: 0,
-  //     yPercent: -10,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationTextName[1],
-  //   {
-  //     opacity: 0,
-  //     yPercent: -10,
-  //   },
-  //   "<"
-  // );
-
-  // *******************************************************************
   locationImgWrapper.forEach((elem, index) => {
     if (index === locationImgWrapper.length - 1) {
       tl.to(locationListItem[index], {
-        onStart: () => {
-          locationListItem[index].classList.add("active");
-          console.log("start");
-        },
-        // onComplete: () => {
-        //   locationListItem[index - 1].classList.remove("active");
-        // }
+        opacity: 1,
       });
-      
+
       tl.to(
         locationList[index],
         {
           yPercent: -100,
-          duration: 5,
+          // duration: 5,
         },
         "<"
       );
@@ -195,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         locationImgWrapper[index],
         {
           clipPath: "circle(15% at 50% 50%)",
-          duration: 5,
+          // duration: 5,
         },
         "<"
       );
@@ -203,28 +57,18 @@ document.addEventListener("DOMContentLoaded", () => {
         locationImgHiderBg[index],
         {
           clipPath: "circle(0% at 50% 50%)",
-          duration: 5,
+          // duration: 5,
         },
         "<"
       );
       tl.to(locationImgWrapper[index], {
         clipPath: "circle(77% at 50% 50%)",
-        duration: 5,
+        // duration: 5,
       });
     } else if (index === 0) {
-      tl.to(locationListItem[index], {
-        onStart: () => {
-          locationListItem[index].classList.add("active");
-          console.log("start");
-        },
-        // onComplete: () => {
-        //   locationListItem[index - 1].classList.remove("active");
-        // }
-      });
-
       tl.to(locationImgWrapper[index], {
         clipPath: "circle(15% at 50% 40%)",
-        duration: 2,
+        // duration: 2,
       });
 
       tl.to(
@@ -239,69 +83,74 @@ document.addEventListener("DOMContentLoaded", () => {
         scale: 0.85,
       });
 
-      tl.to(locationMinutes[index], {
+      tl.to(locationSubtitles[index], {
         opacity: 1,
+        // duration: 5,
       });
-
-      tl.to(
-        locationTextName[index],
-        {
-          opacity: 1,
-        },
-        "<"
-      );
 
       tl.to(locationListWithoutFirst, {
         yPercent: -55,
       });
 
       tl.to(locationImgWrapper[index], {
-        clipPath: "circle(0% at 50% 50%)",
-        duration: 2,
+        clipPath: "circle(1% at 50% 50%)",
+        // duration: 2,
       });
 
       tl.to(
         locationImgWrapper[index],
         {
-          yPercent: -50,
-          duration: 2,
+          yPercent: -45,
+          // duration: 2,
         },
         "<"
       );
 
       tl.to(
-        locationMinutes[index],
+        locationSubtitles[index],
         {
           opacity: 0,
-          yPercent: -10,
+          // duration: 5,
         },
         "<"
       );
 
       tl.to(
-        locationTextName[index],
+        locationSubtitles[index],
         {
-          opacity: 0,
-          yPercent: -10,
+          yPercent: -800,
         },
-        "<"
       );
+
+      tl.to(
+        locationImgHiderBg[index],
+        {
+          clipPath: "circle(3% at 50% 50%)",
+          // duration: 5,
+        },
+      );
+
+      tl.to(locationImgWrapper[index], {
+        xPercent: -45,
+        // duration: 2,
+      });
+
+      tl.to(locationSubtitles[index], {
+        opacity: 1,
+        xPercent: -450,
+        // duration: 5,
+      });
     } else {
       tl.to(locationListItem[index], {
-        onStart: () => {
-          locationListItem[index].classList.add("active");
-          console.log("start");
-        },
-        // onComplete: () => {
-        //   locationListItem[index - 1].classList.remove("active");
-        // }
+        opacity: 1,
+        // duration: 5,
       });
 
       tl.to(
         locationList[index],
         {
           yPercent: -110,
-          duration: 5,
+          // duration: 5,
         },
         "<"
       );
@@ -309,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
         locationImgWrapper[index],
         {
           clipPath: "circle(15% at 50% 50%)",
-          duration: 5,
+          // duration: 5,
         },
         "<"
       );
@@ -317,262 +166,46 @@ document.addEventListener("DOMContentLoaded", () => {
         locationImgHiderBg[index],
         {
           clipPath: "circle(0% at 50% 50%)",
-          duration: 5,
+          // duration: 5,
         },
         "<"
       );
-      tl.to(locationMinutes[index], {
+      tl.to(locationSubtitles[index], {
         opacity: 1,
+        // duration: 5,
       });
-      tl.to(
-        locationTextName[index],
-        {
-          opacity: 1,
-        },
-        "<"
-      );
+
       tl.to(locationImgWrapper[index], {
-        clipPath: "circle(0% at 50% 50%)",
-        duration: 5,
+        clipPath: "circle(1% at 50% 50%)",
+        // duration: 5,
       });
+
       tl.to(
-        elem,
+        locationImgWrapper[index],
         {
-          yPercent: -50,
-          duration: 2,
+          yPercent: -35,
+          // duration: 2,
         },
         "<"
       );
+
       tl.to(
-        locationMinutes[index],
+        locationSubtitles[index],
         {
           opacity: 0,
-          yPercent: -10,
+          // duration: 5,
         },
         "<"
       );
+
       tl.to(
-        locationTextName[index],
+        locationImgHiderBg[index],
         {
-          opacity: 0,
-          yPercent: -10,
+          clipPath: "circle(1% at 50% 50%)",
+          // duration: 5,
         },
         "<"
       );
     }
   });
-  // *******************************************************************
-
-  // tl.to(
-  //   locationList[2],
-  //   {
-  //     yPercent: -110,
-  //     duration: 2,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationImgWrapper[2],
-  //   {
-  //     clipPath: "circle(15% at 50% 50%)",
-  //     duration: 2,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationImgHiderBg[2],
-  //   {
-  //     clipPath: "circle(0% at 50% 50%)",
-  //     duration: 1,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(locationMinutes[2], {
-  //   opacity: 1,
-  // });
-
-  // tl.to(
-  //   locationTextName[2],
-  //   {
-  //     opacity: 1,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(locationImgWrapper[2], {
-  //   clipPath: "circle(0% at 50% 50%)",
-  //   duration: 2,
-  // });
-
-  // tl.to(
-  //   locationImgWrapper[2],
-  //   {
-  //     yPercent: -50,
-  //     duration: 2,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationMinutes[2],
-  //   {
-  //     opacity: 0,
-  //     yPercent: -10,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationTextName[2],
-  //   {
-  //     opacity: 0,
-  //     yPercent: -10,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationList[3],
-  //   {
-  //     yPercent: -110,
-  //     duration: 2,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationImgWrapper[3],
-  //   {
-  //     clipPath: "circle(15% at 50% 50%)",
-  //     duration: 2,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationImgHiderBg[3],
-  //   {
-  //     clipPath: "circle(0% at 50% 50%)",
-  //     duration: 1,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(locationMinutes[3], {
-  //   opacity: 1,
-  // });
-
-  // tl.to(
-  //   locationTextName[3],
-  //   {
-  //     opacity: 1,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(locationImgWrapper[3], {
-  //   clipPath: "circle(0% at 50% 50%)",
-  //   duration: 2,
-  // });
-
-  // tl.to(
-  //   locationImgWrapper[3],
-  //   {
-  //     yPercent: -50,
-  //     duration: 2,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationMinutes[3],
-  //   {
-  //     opacity: 0,
-  //     yPercent: -10,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationTextName[3],
-  //   {
-  //     opacity: 0,
-  //     yPercent: -10,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationList[4],
-  //   {
-  //     yPercent: -110,
-  //     duration: 2,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationImgWrapper[4],
-  //   {
-  //     clipPath: "circle(15% at 50% 50%)",
-  //     duration: 2,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationImgHiderBg[4],
-  //   {
-  //     clipPath: "circle(0% at 50% 50%)",
-  //     duration: 1,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(locationMinutes[4], {
-  //   opacity: 1,
-  // });
-
-  // tl.to(
-  //   locationTextName[4],
-  //   {
-  //     opacity: 1,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(locationImgWrapper[4], {
-  //   clipPath: "circle(0% at 50% 50%)",
-  //   duration: 2,
-  // });
-
-  // tl.to(
-  //   locationImgWrapper[4],
-  //   {
-  //     yPercent: -50,
-  //     duration: 2,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationMinutes[4],
-  //   {
-  //     opacity: 0,
-  //     yPercent: -10,
-  //   },
-  //   "<"
-  // );
-
-  // tl.to(
-  //   locationTextName[4],
-  //   {
-  //     opacity: 0,
-  //     yPercent: -10,
-  //   },
-  //   "<"
-  // );
 });

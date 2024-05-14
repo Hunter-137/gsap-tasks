@@ -48,11 +48,40 @@
 }
 
 .main-bg__circle-big {
+  width: 65vw;
+  height: 65vw;
+  position: absolute;
+  z-index: 20;
+  left: 17.5%;
+  top: -18%;
+  background-color: transparent;
+  border: 1px solid #808080;
+  border-radius: 50%;
+}
+
+.main-bg__circle-small {
+  width: 40vw;
+  height: 40vw;
+  position: absolute;
+  z-index: 20;
+  left: 30%;
+  bottom: 13.8%;
+  background-color: transparent;
+  border: 1px solid #808080;
+  border-radius: 50%;
+}
+
+.main-bg__blackout {
   width: 100%;
   height: 100%;
 }
 
-.main-bg__circle-small {
+.main-bg__blackout::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
 }
@@ -60,7 +89,7 @@
 .main-bg-list__item {
   width: 100%;
   height: 100%;
-  filter: brightness(0.3) blur(5px);
+  /* filter: brightness(0.3) blur(5px); */
   object-fit: cover;
   object-position: top;
   position: absolute;
@@ -72,7 +101,7 @@
 
 .main-bg-list__item.first {
   opacity: 1;
-  filter: brightness(0.3) blur(0px);
+  /* filter: brightness(0.3) blur(0px); */
 }
 
 .main-bg-list__item.last {
@@ -90,7 +119,7 @@
 
 .main-bg-list__item.last.active {
   opacity: 1;
-  filter: brightness(0.8) blur(5px);
+  /* filter: brightness(0.8) blur(5px); */
 }
 
 .main-circle-list-wrapper {
@@ -101,6 +130,7 @@
 .main-circle-list-items {
   width: 100%;
   height: 100%;
+  z-index: 30;
 }
 
 .main-circle-list-items:first-child {
@@ -163,29 +193,31 @@
   position: relative;
 }
 
-.main-circle-item__road-time,
-.main-circle-item__text {
-  position: relative;
+.main-circle-item__subtitle {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 78%;
+  left: 45.5%;
   z-index: 20;
-  color: #fff;
-  text-align: center;
   opacity: 0;
 }
 
+.main-circle-item__subtitle.first {
+  top: 67%;
+  left: 45.5%;
+}
+
+.main-circle-item__road-time,
+.main-circle-item__text {
+  color: #fff;
+  text-align: center;
+}
+
 .main-circle-item__road-time {
-  bottom: 22%;
   font-size: 3rem;
 }
 
 .main-circle-item__text {
-  bottom: 20%;
-  font-size: 2rem;
-}
-
-.main-circle-item__road-time.first {
-  bottom: 32%;
-}
-
-.main-circle-item__text.first {
-  bottom: 30%;
+  font-size: 1.2rem;
 }

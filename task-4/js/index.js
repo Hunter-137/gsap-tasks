@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
+  let yLocationImgWrapper = 38;
   locationImgWrapper.forEach((elem, index) => {
     if (index === locationImgWrapper.length - 1) {
       tl.to(locationListItem[index], {
@@ -41,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
         locationList[index],
         {
           yPercent: -100,
-          // duration: 5,
         },
         "<"
       );
@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
         locationImgWrapper[index],
         {
           clipPath: "circle(15% at 50% 50%)",
-          // duration: 5,
         },
         "<"
       );
@@ -57,18 +56,15 @@ document.addEventListener("DOMContentLoaded", () => {
         locationImgHiderBg[index],
         {
           clipPath: "circle(0% at 50% 50%)",
-          // duration: 5,
         },
         "<"
       );
       tl.to(locationImgWrapper[index], {
         clipPath: "circle(77% at 50% 50%)",
-        // duration: 5,
       });
     } else if (index === 0) {
       tl.to(locationImgWrapper[index], {
         clipPath: "circle(15% at 50% 40%)",
-        // duration: 2,
       });
 
       tl.to(
@@ -85,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       tl.to(locationSubtitles[index], {
         opacity: 1,
-        // duration: 5,
       });
 
       tl.to(locationListWithoutFirst, {
@@ -94,14 +89,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       tl.to(locationImgWrapper[index], {
         clipPath: "circle(1% at 50% 50%)",
-        // duration: 2,
       });
 
       tl.to(
         locationImgWrapper[index],
         {
-          yPercent: -45,
-          // duration: 2,
+          yPercent: -48,
         },
         "<"
       );
@@ -110,47 +103,30 @@ document.addEventListener("DOMContentLoaded", () => {
         locationSubtitles[index],
         {
           opacity: 0,
-          // duration: 5,
         },
         "<"
       );
 
-      tl.to(
-        locationSubtitles[index],
-        {
-          yPercent: -800,
-        },
-      );
+      // tl.to(
+      //   locationSubtitles[index],
+      //   {
+      //     yPercent: -800,
+      //     duration: 0,
+      //   },
+      // );
 
-      tl.to(
-        locationImgHiderBg[index],
-        {
-          clipPath: "circle(3% at 50% 50%)",
-          // duration: 5,
-        },
-      );
-
-      tl.to(locationImgWrapper[index], {
-        xPercent: -45,
-        // duration: 2,
-      });
-
-      tl.to(locationSubtitles[index], {
-        opacity: 1,
-        xPercent: -450,
-        // duration: 5,
+      tl.to(locationImgHiderBg[index], {
+        clipPath: "circle(3% at 50% 50%)",
       });
     } else {
       tl.to(locationListItem[index], {
         opacity: 1,
-        // duration: 5,
       });
 
       tl.to(
         locationList[index],
         {
           yPercent: -110,
-          // duration: 5,
         },
         "<"
       );
@@ -158,7 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
         locationImgWrapper[index],
         {
           clipPath: "circle(15% at 50% 50%)",
-          // duration: 5,
         },
         "<"
       );
@@ -166,25 +141,21 @@ document.addEventListener("DOMContentLoaded", () => {
         locationImgHiderBg[index],
         {
           clipPath: "circle(0% at 50% 50%)",
-          // duration: 5,
         },
         "<"
       );
       tl.to(locationSubtitles[index], {
         opacity: 1,
-        // duration: 5,
       });
 
       tl.to(locationImgWrapper[index], {
         clipPath: "circle(1% at 50% 50%)",
-        // duration: 5,
       });
-
+      yLocationImgWrapper = yLocationImgWrapper - 4;
       tl.to(
         locationImgWrapper[index],
         {
-          yPercent: -35,
-          // duration: 2,
+          yPercent: -yLocationImgWrapper,
         },
         "<"
       );
@@ -193,7 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
         locationSubtitles[index],
         {
           opacity: 0,
-          // duration: 5,
         },
         "<"
       );
@@ -202,7 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
         locationImgHiderBg[index],
         {
           clipPath: "circle(1% at 50% 50%)",
-          // duration: 5,
         },
         "<"
       );

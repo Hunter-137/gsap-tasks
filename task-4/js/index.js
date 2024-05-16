@@ -19,19 +19,31 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".main-circle-item__subtitle")
   );
 
+  const locationBgCircleBig = document.querySelector(".main-bg__circle.big");
+  const locationBgCircleSmall = document.querySelector(
+    ".main-bg__circle.small"
+  );
+  const locationBgLineCenter = document.querySelector(".main-bg__line-center");
+
+  const locationBgPointText = Array.from(
+    document.querySelectorAll(".point-text__item")
+  );
+
+  const mediaQuery2000 = window.matchMedia("(max-width: 2000px)");
+
   gsap.registerPlugin(ScrollTrigger);
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".main",
       // markers: true,
       start: "top top",
-      end: "bottom+=5500vh top",
+      end: "bottom+=4000vh top",
       pin: true,
       scrub: 2,
     },
   });
 
-  let yLocationImgWrapper = 38;
+  let yLocationImgWrapper = 48;
   locationImgWrapper.forEach((elem, index) => {
     if (index === locationImgWrapper.length - 1) {
       tl.to(locationListItem[index], {
@@ -64,19 +76,33 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } else if (index === 0) {
       tl.to(locationImgWrapper[index], {
-        clipPath: "circle(15% at 50% 40%)",
+        clipPath: "circle(15% at 50% 50%)",
       });
 
-      tl.to(
-        locationImg[index],
-        {
-          objectPosition: "50% -50%",
-        },
-        "<60%"
-      );
+      if (mediaQuery2000.matches) {
+        tl.to(
+          locationImg[index],
+          {
+            objectPosition: "50% -100%",
+          },
+          "<50%"
+        );
+      } else {
+        tl.to(
+          locationImg[index],
+          {
+            objectPosition: "50% -50%",
+          },
+          "<60%"
+        );
+      }
 
       tl.to(locationImg[index], {
-        scale: 0.85,
+        scale: 0.86,
+        onComplete: () => {
+          locationBgCircleBig.classList.add("active");
+          locationBgCircleSmall.classList.add("active");
+        },
       });
 
       tl.to(locationSubtitles[index], {
@@ -89,6 +115,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       tl.to(locationImgWrapper[index], {
         clipPath: "circle(1% at 50% 50%)",
+        onStart: () => {
+          locationBgCircleBig.classList.remove("active");
+          locationBgCircleSmall.classList.remove("active");
+        },
       });
 
       tl.to(
@@ -107,17 +137,17 @@ document.addEventListener("DOMContentLoaded", () => {
         "<"
       );
 
-      // tl.to(
-      //   locationSubtitles[index],
-      //   {
-      //     yPercent: -800,
-      //     duration: 0,
-      //   },
-      // );
-
       tl.to(locationImgHiderBg[index], {
         clipPath: "circle(3% at 50% 50%)",
       });
+
+      tl.to(
+        locationBgPointText[index],
+        {
+          xPercent: +100,
+        },
+        "<"
+      );
     } else {
       tl.to(locationListItem[index], {
         opacity: 1,
@@ -126,14 +156,28 @@ document.addEventListener("DOMContentLoaded", () => {
       tl.to(
         locationList[index],
         {
-          yPercent: -110,
+          yPercent: -100,
         },
         "<"
       );
+
+      tl.to(
+        locationBgLineCenter,
+        {
+          yPercent: 100,
+          duration: 1,
+        },
+        "<"
+      );
+
       tl.to(
         locationImgWrapper[index],
         {
           clipPath: "circle(15% at 50% 50%)",
+          onComplete: () => {
+            locationBgCircleBig.classList.add("active");
+            locationBgCircleSmall.classList.add("active");
+          },
         },
         "<"
       );
@@ -156,6 +200,10 @@ document.addEventListener("DOMContentLoaded", () => {
         locationImgWrapper[index],
         {
           yPercent: -yLocationImgWrapper,
+          onStart: () => {
+            locationBgCircleBig.classList.remove("active");
+            locationBgCircleSmall.classList.remove("active");
+          },
         },
         "<"
       );
@@ -175,6 +223,10 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         "<"
       );
+
+      tl.to(locationBgPointText[index], {
+        xPercent: +100,
+      });
     }
   });
 });

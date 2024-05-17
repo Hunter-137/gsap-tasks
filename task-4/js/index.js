@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".point-text__item")
   );
 
+  const fakeDiv = document.querySelector(".fake-div");
+
   const mediaQuery2000 = window.matchMedia("(max-width: 2000px)");
 
   gsap.registerPlugin(ScrollTrigger);
@@ -43,12 +45,20 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
+  const tlText = gsap.timeline({
+    paused: true,
+  });
+
   let yLocationImgWrapper = 48;
   locationImgWrapper.forEach((elem, index) => {
     if (index === locationImgWrapper.length - 1) {
-      tl.to(locationListItem[index], {
-        opacity: 1,
-      });
+      tl.to(
+        locationListItem[index],
+        {
+          opacity: 1,
+        },
+        "<"
+      );
 
       tl.to(
         locationList[index],
@@ -61,6 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
         locationImgWrapper[index],
         {
           clipPath: "circle(15% at 50% 50%)",
+          onComplete: () => {
+            locationBgCircleBig.classList.add("active");
+            locationBgCircleSmall.classList.add("active");
+          },
         },
         "<"
       );
@@ -73,6 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       tl.to(locationImgWrapper[index], {
         clipPath: "circle(77% at 50% 50%)",
+        onComplete: () => {
+          locationBgCircleBig.classList.remove("active");
+          locationBgCircleSmall.classList.remove("active");
+        },
       });
     } else if (index === 0) {
       tl.to(locationImgWrapper[index], {
@@ -105,9 +123,13 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       });
 
-      tl.to(locationSubtitles[index], {
-        opacity: 1,
-      });
+      tl.to(
+        locationSubtitles[index],
+        {
+          opacity: 1,
+        },
+        "<"
+      );
 
       tl.to(locationListWithoutFirst, {
         yPercent: -55,
@@ -133,25 +155,47 @@ document.addEventListener("DOMContentLoaded", () => {
         locationSubtitles[index],
         {
           opacity: 0,
+          yPercent: -100,
+          duration: 0.1,
         },
         "<"
       );
-
-      tl.to(locationImgHiderBg[index], {
-        clipPath: "circle(3% at 50% 50%)",
-      });
 
       tl.to(
-        locationBgPointText[index],
+        locationImgHiderBg[index],
         {
-          xPercent: +100,
+          clipPath: "circle(1% at 50% 50%)",
+          onComplete: () => {
+            locationBgPointText[index].classList.add("active");
+          },
         },
         "<"
       );
+
+      tl.to(fakeDiv, {
+        x: 1,
+        duration: 0,
+        onReverseComplete: () => {
+          locationBgPointText[index].classList.remove("active");
+        },
+      }, "<")
+
+      // tl.to(
+      //   locationBgPointText[index],
+      //   {
+      //     xPercent: +100,
+      //     duration: 0.2,
+      //   },
+      //   "<"
+      // );
     } else {
-      tl.to(locationListItem[index], {
-        opacity: 1,
-      });
+      tl.to(
+        locationListItem[index],
+        {
+          opacity: 1,
+        },
+        "<"
+      );
 
       tl.to(
         locationList[index],
@@ -188,9 +232,13 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         "<"
       );
-      tl.to(locationSubtitles[index], {
-        opacity: 1,
-      });
+      tl.to(
+        locationSubtitles[index],
+        {
+          opacity: 1,
+        },
+        "<95%"
+      );
 
       tl.to(locationImgWrapper[index], {
         clipPath: "circle(1% at 50% 50%)",
@@ -212,6 +260,8 @@ document.addEventListener("DOMContentLoaded", () => {
         locationSubtitles[index],
         {
           opacity: 0,
+          yPercent: -100,
+          duration: 0.1,
         },
         "<"
       );
@@ -220,13 +270,29 @@ document.addEventListener("DOMContentLoaded", () => {
         locationImgHiderBg[index],
         {
           clipPath: "circle(1% at 50% 50%)",
+          onComplete: () => {
+            locationBgPointText[index].classList.add("active");
+          },
         },
         "<"
       );
 
-      tl.to(locationBgPointText[index], {
-        xPercent: +100,
-      });
+      tl.to(fakeDiv, {
+        x: 1,
+        duration: 0,
+        onReverseComplete: () => {
+          locationBgPointText[index].classList.remove("active");
+        },
+      }, "<")
+
+      // tl.to(
+      //   locationBgPointText[index],
+      //   {
+      //     xPercent: +100,
+      //     duration: 0.15,
+      //   },
+      //   "<"
+      // );
     }
   });
 });

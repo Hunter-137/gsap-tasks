@@ -18,26 +18,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const locationSubtitles = Array.from(
     document.querySelectorAll(".main-circle-item__subtitle")
   );
-
   const locationBgCircleBig = document.querySelector(".main-bg__circle.big");
   const locationBgCircleSmall = document.querySelector(
     ".main-bg__circle.small"
   );
   const locationBgLineCenter = document.querySelector(".main-bg__line-center");
-
   const locationBgPointText = Array.from(
     document.querySelectorAll(".point-text__item")
   );
-
   const fakeDiv = document.querySelector(".fake-div");
-
   const mediaQuery2000 = window.matchMedia("(max-width: 2000px)");
 
   gsap.registerPlugin(ScrollTrigger);
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".main",
-      // markers: true,
+      markers: true,
       start: "top top",
       end: "bottom+=4000vh top",
       pin: true,
@@ -45,8 +41,100 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
-  const tlText = gsap.timeline({
-    paused: true,
+  const tl2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: locationImgWrapper[0],
+      // markers: true,
+      start: "bottom+=980vh top",
+      end: "bottom+=980vh top",
+      // pin: true,
+      scrub: 2,
+      onLeaveBack: () => {
+        locationBgPointText[0].classList.remove("active");
+        console.log("onLeaveBack");
+      },
+      onLeave: () => {
+        locationBgPointText[0].classList.add("active");
+        console.log("onLeave");
+      },
+    },
+  });
+
+  tl2.to(fakeDiv, {
+    x: 1,
+    duration: 0,
+  });
+
+  const tl3 = gsap.timeline({
+    scrollTrigger: {
+      trigger: locationImgWrapper[1],
+      // markers: true,
+      start: "bottom+=900vh top",
+      end: "bottom+=900vh top",
+      // pin: true,
+      scrub: 2,
+      onLeaveBack: () => {
+        locationBgPointText[1].classList.remove("active");
+        console.log("onLeaveBack");
+      },
+      onLeave: () => {
+        locationBgPointText[1].classList.add("active");
+        console.log("onLeave");
+      },
+    },
+  });
+
+  tl3.to(fakeDiv, {
+    x: 1,
+    duration: 0,
+  });
+
+  const tl4 = gsap.timeline({
+    scrollTrigger: {
+      trigger: locationImgWrapper[2],
+      // markers: true,
+      start: "bottom+=1700vh top",
+      end: "bottom+=1700vh top",
+      // pin: true,
+      scrub: 2,
+      onLeaveBack: () => {
+        locationBgPointText[2].classList.remove("active");
+        console.log("onLeaveBack");
+      },
+      onLeave: () => {
+        locationBgPointText[2].classList.add("active");
+        console.log("onLeave");
+      },
+    },
+  });
+
+  tl4.to(fakeDiv, {
+    x: 1,
+    duration: 0,
+  });
+
+  const tl5 = gsap.timeline({
+    scrollTrigger: {
+      trigger: locationImgWrapper[3],
+      // markers: true,
+      start: "bottom+=2550vh top",
+      end: "bottom+=2550vh top",
+      // pin: true,
+      scrub: 2,
+      onLeaveBack: () => {
+        locationBgPointText[3].classList.remove("active");
+        console.log("onLeaveBack");
+      },
+      onLeave: () => {
+        locationBgPointText[3].classList.add("active");
+        console.log("onLeave");
+      },
+    },
+  });
+
+  tl5.to(fakeDiv, {
+    x: 1,
+    duration: 0,
   });
 
   let yLocationImgWrapper = 48;
@@ -101,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
         tl.to(
           locationImg[index],
           {
-            objectPosition: "50% -100%",
+            objectPosition: "50% -140%",
           },
           "<50%"
         );
@@ -109,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
         tl.to(
           locationImg[index],
           {
-            objectPosition: "50% -50%",
+            objectPosition: "50% -63%",
           },
           "<60%"
         );
@@ -165,29 +253,9 @@ document.addEventListener("DOMContentLoaded", () => {
         locationImgHiderBg[index],
         {
           clipPath: "circle(1% at 50% 50%)",
-          onComplete: () => {
-            locationBgPointText[index].classList.add("active");
-          },
         },
         "<"
       );
-
-      tl.to(fakeDiv, {
-        x: 1,
-        duration: 0,
-        onReverseComplete: () => {
-          locationBgPointText[index].classList.remove("active");
-        },
-      }, "<")
-
-      // tl.to(
-      //   locationBgPointText[index],
-      //   {
-      //     xPercent: +100,
-      //     duration: 0.2,
-      //   },
-      //   "<"
-      // );
     } else {
       tl.to(
         locationListItem[index],
@@ -243,7 +311,9 @@ document.addEventListener("DOMContentLoaded", () => {
       tl.to(locationImgWrapper[index], {
         clipPath: "circle(1% at 50% 50%)",
       });
+
       yLocationImgWrapper = yLocationImgWrapper - 4;
+
       tl.to(
         locationImgWrapper[index],
         {
@@ -270,29 +340,9 @@ document.addEventListener("DOMContentLoaded", () => {
         locationImgHiderBg[index],
         {
           clipPath: "circle(1% at 50% 50%)",
-          onComplete: () => {
-            locationBgPointText[index].classList.add("active");
-          },
         },
         "<"
       );
-
-      tl.to(fakeDiv, {
-        x: 1,
-        duration: 0,
-        onReverseComplete: () => {
-          locationBgPointText[index].classList.remove("active");
-        },
-      }, "<")
-
-      // tl.to(
-      //   locationBgPointText[index],
-      //   {
-      //     xPercent: +100,
-      //     duration: 0.15,
-      //   },
-      //   "<"
-      // );
     }
   });
 });

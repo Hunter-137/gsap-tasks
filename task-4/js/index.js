@@ -27,7 +27,73 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".point-text__item")
   );
   const fakeDiv = document.querySelector(".fake-div");
-  const mediaQuery2000 = window.matchMedia("(max-width: 2000px)");
+  const mediaQuery2000 = window.matchMedia("(max-width: 2000px)"); // отдельно
+
+  const mediaQuery3840_4000 = window.matchMedia(
+    "(min-width: 3840px) and (max-width: 4000px)" // 4к
+  );
+  const mediaQuery2560_3839 = window.matchMedia(
+    "(min-width: 2560px) and (max-width: 3839px)" // 2к
+  );
+  const mediaQuery1920_2559 = window.matchMedia(
+    "(min-width: 1920px) and (max-width: 2559px)" // пк
+  );
+  const mediaQuery1280_1680 = window.matchMedia(
+    "(min-width: 1280px) and (max-width: 1680px)" // ноут
+  );
+  const mediaQuery768_1024 = window.matchMedia(
+    "(min-width: 768px) and (max-width: 1024px)" // планшет
+  );
+  const mediaQuery480 = window.matchMedia(
+    "(max-width: 480px)" // тел
+  );
+
+  let scrollCountTl2 = "bottom+=100% top";
+  let scrollCountTl3 = "bottom+=200% top";
+  let scrollCountTl4 = "bottom+=300% top";
+  let scrollCountTl5 = "bottom+=360% top";
+
+  if (mediaQuery3840_4000.matches) {
+    scrollCountTl2 = "bottom+=30% top";
+    scrollCountTl3 = "bottom+=85% top";
+    scrollCountTl4 = "bottom+=140% top";
+    scrollCountTl5 = "bottom+=190% top";
+  }
+
+  if (mediaQuery2560_3839.matches) {
+    scrollCountTl2 = "bottom+=70% top";
+    scrollCountTl3 = "bottom+=140% top";
+    scrollCountTl4 = "bottom+=220% top";
+    scrollCountTl5 = "bottom+=295% top";
+  }
+
+  if (mediaQuery1920_2559.matches) {
+    scrollCountTl2 = "bottom+=100% top";
+    scrollCountTl3 = "bottom+=200% top";
+    scrollCountTl4 = "bottom+=295% top";
+    scrollCountTl5 = "bottom+=360% top";
+  }
+
+  if (mediaQuery1280_1680.matches) {
+    scrollCountTl2 = "bottom+=100% top";
+    scrollCountTl3 = "bottom+=200% top";
+    scrollCountTl4 = "bottom+=270% top";
+    scrollCountTl5 = "bottom+=380% top";
+  }
+
+  if (mediaQuery768_1024.matches) {
+    scrollCountTl2 = "bottom+=100% top";
+    scrollCountTl3 = "bottom+=170% top";
+    scrollCountTl4 = "bottom+=250% top";
+    scrollCountTl5 = "bottom+=330% top";
+  }
+
+  if (mediaQuery480.matches) {
+    scrollCountTl2 = "bottom+=100% top";
+    scrollCountTl3 = "bottom+=200% top";
+    scrollCountTl4 = "bottom+=290% top";
+    scrollCountTl5 = "bottom+=360% top";
+  }
 
   gsap.registerPlugin(ScrollTrigger);
   const tl = gsap.timeline({
@@ -45,9 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollTrigger: {
       trigger: locationImgWrapper[0],
       // markers: true,
-      start: "bottom+=980vh top",
-      end: "bottom+=980vh top",
-      // pin: true,
+      start: scrollCountTl2,
+      end: scrollCountTl2,
       scrub: 2,
       onLeaveBack: () => {
         locationBgPointText[0].classList.remove("active");
@@ -67,11 +132,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const tl3 = gsap.timeline({
     scrollTrigger: {
-      trigger: locationImgWrapper[1],
+      trigger: locationImgWrapper[0],
       // markers: true,
-      start: "bottom+=900vh top",
-      end: "bottom+=900vh top",
-      // pin: true,
+      start: scrollCountTl3,
+      end: scrollCountTl3,
       scrub: 2,
       onLeaveBack: () => {
         locationBgPointText[1].classList.remove("active");
@@ -91,11 +155,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const tl4 = gsap.timeline({
     scrollTrigger: {
-      trigger: locationImgWrapper[2],
+      trigger: locationImgWrapper[0],
       // markers: true,
-      start: "bottom+=1700vh top",
-      end: "bottom+=1700vh top",
-      // pin: true,
+      start: scrollCountTl4,
+      end: scrollCountTl4,
       scrub: 2,
       onLeaveBack: () => {
         locationBgPointText[2].classList.remove("active");
@@ -115,11 +178,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const tl5 = gsap.timeline({
     scrollTrigger: {
-      trigger: locationImgWrapper[3],
+      trigger: locationImgWrapper[0],
       // markers: true,
-      start: "bottom+=2550vh top",
-      end: "bottom+=2550vh top",
-      // pin: true,
+      start: scrollCountTl5,
+      end: scrollCountTl5,
       scrub: 2,
       onLeaveBack: () => {
         locationBgPointText[3].classList.remove("active");

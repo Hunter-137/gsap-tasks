@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".main",
-      markers: true,
+      // markers: true,
       start: "top top",
       end: "bottom+=4000vh top",
       pin: true,

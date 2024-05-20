@@ -59,7 +59,7 @@
   display: flex;
   flex-direction: column;
   color: #fff;
-  font-size: 1.6rem;
+  font-size: 1rem;
   line-height: 4vh;
   overflow: hidden;
 }
@@ -78,7 +78,7 @@
   z-index: 20;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   background-color: transparent;
   border: 1px solid #808080;
   border-radius: 50%;
@@ -92,8 +92,7 @@
 }
 
 .main-bg__circle.big.active {
-  width: 65vw;
-  height: 65vw;
+  transform: translate(-50%, -50%) scale(1.2);
 }
 
 .main-bg__circle.small {
@@ -102,8 +101,7 @@
 }
 
 .main-bg__circle.small.active {
-  width: 40vw;
-  height: 40vw;
+  transform: translate(-50%, -50%) scale(1.2);
 }
 
 .main-bg__line-center {

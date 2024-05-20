@@ -116,11 +116,9 @@ document.addEventListener("DOMContentLoaded", () => {
       scrub: 2,
       onLeaveBack: () => {
         locationBgPointText[0].classList.remove("active");
-        console.log("onLeaveBack");
       },
       onLeave: () => {
         locationBgPointText[0].classList.add("active");
-        console.log("onLeave");
       },
     },
   });
@@ -139,11 +137,9 @@ document.addEventListener("DOMContentLoaded", () => {
       scrub: 2,
       onLeaveBack: () => {
         locationBgPointText[1].classList.remove("active");
-        console.log("onLeaveBack");
       },
       onLeave: () => {
         locationBgPointText[1].classList.add("active");
-        console.log("onLeave");
       },
     },
   });
@@ -162,11 +158,9 @@ document.addEventListener("DOMContentLoaded", () => {
       scrub: 2,
       onLeaveBack: () => {
         locationBgPointText[2].classList.remove("active");
-        console.log("onLeaveBack");
       },
       onLeave: () => {
         locationBgPointText[2].classList.add("active");
-        console.log("onLeave");
       },
     },
   });
@@ -185,11 +179,9 @@ document.addEventListener("DOMContentLoaded", () => {
       scrub: 2,
       onLeaveBack: () => {
         locationBgPointText[3].classList.remove("active");
-        console.log("onLeaveBack");
       },
       onLeave: () => {
         locationBgPointText[3].classList.add("active");
-        console.log("onLeave");
       },
     },
   });

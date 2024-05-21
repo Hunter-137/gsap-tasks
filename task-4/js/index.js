@@ -48,147 +48,58 @@ document.addEventListener("DOMContentLoaded", () => {
     "(max-width: 480px)" // тел
   );
 
-  let scrollCountTl2 = "bottom+=100% top";
-  let scrollCountTl3 = "bottom+=200% top";
-  let scrollCountTl4 = "bottom+=300% top";
-  let scrollCountTl5 = "bottom+=360% top";
+  const mediaQueries = [
+    { query: mediaQuery3840_4000, values: [30, 85, 140, 190] },
+    { query: mediaQuery2560_3839, values: [70, 140, 220, 295] },
+    { query: mediaQuery1920_2559, values: [100, 200, 295, 360] },
+    { query: mediaQuery1280_1680, values: [100, 200, 270, 380] },
+    { query: mediaQuery768_1024, values: [100, 170, 250, 330] },
+    { query: mediaQuery480, values: [100, 200, 290, 360] },
+  ];
 
-  if (mediaQuery3840_4000.matches) {
-    scrollCountTl2 = "bottom+=30% top";
-    scrollCountTl3 = "bottom+=85% top";
-    scrollCountTl4 = "bottom+=140% top";
-    scrollCountTl5 = "bottom+=190% top";
+  const defaultValues = [100, 200, 300, 360];
+
+  let scrollCountTl = defaultValues.map((value) => `bottom+=${value}% top`);
+
+  for (const { query, values } of mediaQueries) {
+    if (query.matches) {
+      scrollCountTl = values.map((value) => `bottom+=${value}% top`);
+      break;
+    }
   }
 
-  if (mediaQuery2560_3839.matches) {
-    scrollCountTl2 = "bottom+=70% top";
-    scrollCountTl3 = "bottom+=140% top";
-    scrollCountTl4 = "bottom+=220% top";
-    scrollCountTl5 = "bottom+=295% top";
-  }
+  const createTextTl = (start, end, index) => {
+    const textTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: locationImgWrapper[0],
 
-  if (mediaQuery1920_2559.matches) {
-    scrollCountTl2 = "bottom+=100% top";
-    scrollCountTl3 = "bottom+=200% top";
-    scrollCountTl4 = "bottom+=295% top";
-    scrollCountTl5 = "bottom+=360% top";
-  }
+        start,
+        end,
+        scrub: 2,
+        onLeaveBack: () => {
+          locationBgPointText[index].classList.remove("active");
+        },
+        onLeave: () => {
+          locationBgPointText[index].classList.add("active");
+        },
+      },
+    });
+    return textTl;
+  };
 
-  if (mediaQuery1280_1680.matches) {
-    scrollCountTl2 = "bottom+=100% top";
-    scrollCountTl3 = "bottom+=200% top";
-    scrollCountTl4 = "bottom+=270% top";
-    scrollCountTl5 = "bottom+=380% top";
-  }
-
-  if (mediaQuery768_1024.matches) {
-    scrollCountTl2 = "bottom+=100% top";
-    scrollCountTl3 = "bottom+=170% top";
-    scrollCountTl4 = "bottom+=250% top";
-    scrollCountTl5 = "bottom+=330% top";
-  }
-
-  if (mediaQuery480.matches) {
-    scrollCountTl2 = "bottom+=100% top";
-    scrollCountTl3 = "bottom+=200% top";
-    scrollCountTl4 = "bottom+=290% top";
-    scrollCountTl5 = "bottom+=360% top";
-  }
+  scrollCountTl.forEach((scroll, index) => {
+    return createTextTl(scroll, scroll, index);
+  });
 
   gsap.registerPlugin(ScrollTrigger);
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".main",
-      // markers: true,
       start: "top top",
       end: "bottom+=4000vh top",
       pin: true,
       scrub: 2,
     },
-  });
-
-  const tl2 = gsap.timeline({
-    scrollTrigger: {
-      trigger: locationImgWrapper[0],
-      // markers: true,
-      start: scrollCountTl2,
-      end: scrollCountTl2,
-      scrub: 2,
-      onLeaveBack: () => {
-        locationBgPointText[0].classList.remove("active");
-      },
-      onLeave: () => {
-        locationBgPointText[0].classList.add("active");
-      },
-    },
-  });
-
-  tl2.to(fakeDiv, {
-    x: 1,
-    duration: 0,
-  });
-
-  const tl3 = gsap.timeline({
-    scrollTrigger: {
-      trigger: locationImgWrapper[0],
-      // markers: true,
-      start: scrollCountTl3,
-      end: scrollCountTl3,
-      scrub: 2,
-      onLeaveBack: () => {
-        locationBgPointText[1].classList.remove("active");
-      },
-      onLeave: () => {
-        locationBgPointText[1].classList.add("active");
-      },
-    },
-  });
-
-  tl3.to(fakeDiv, {
-    x: 1,
-    duration: 0,
-  });
-
-  const tl4 = gsap.timeline({
-    scrollTrigger: {
-      trigger: locationImgWrapper[0],
-      // markers: true,
-      start: scrollCountTl4,
-      end: scrollCountTl4,
-      scrub: 2,
-      onLeaveBack: () => {
-        locationBgPointText[2].classList.remove("active");
-      },
-      onLeave: () => {
-        locationBgPointText[2].classList.add("active");
-      },
-    },
-  });
-
-  tl4.to(fakeDiv, {
-    x: 1,
-    duration: 0,
-  });
-
-  const tl5 = gsap.timeline({
-    scrollTrigger: {
-      trigger: locationImgWrapper[0],
-      // markers: true,
-      start: scrollCountTl5,
-      end: scrollCountTl5,
-      scrub: 2,
-      onLeaveBack: () => {
-        locationBgPointText[3].classList.remove("active");
-      },
-      onLeave: () => {
-        locationBgPointText[3].classList.add("active");
-      },
-    },
-  });
-
-  tl5.to(fakeDiv, {
-    x: 1,
-    duration: 0,
   });
 
   let yLocationImgWrapper = 48;

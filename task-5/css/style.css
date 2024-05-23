@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 .container {
   width: 100vw;
   height: 100vh;
@@ -68,7 +72,7 @@
   top: 0;
   left: 0;
   border-radius: 5px;
-  clip-path: inset(0% 0 0 0);
+  clip-path: inset(0 0 0% 0);
 }
 
 .wellness-image__item:nth-child(odd) {

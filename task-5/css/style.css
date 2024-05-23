@@ -17,6 +17,14 @@
   width: 100vw;
   height: 100vh;
   background-color: #808080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fake-div span {
+  color: #fff;
+  font-size: 24px;
 }
 
 .wellness-content-aside__wrapper {

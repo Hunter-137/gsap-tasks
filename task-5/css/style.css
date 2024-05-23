@@ -57,11 +57,11 @@
 
 .wellness-image__list {
   position: sticky;
-  width: calc(50vw - 15px);
-  height: calc(60vh - 15px);
-  top: 25vh;
+  width: 50vw;
+  height: 60vh;
+  top: 20vh;
   right: 0;
-  margin: 25vh 0;
+  margin: 20vh 0;
   flex: 0 0 50%;
 }
 

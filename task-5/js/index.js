@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger,
-          start: "bottom center+=322vh",
-          end: "bottom center-=240vh",
+          start: "bottom center+=30%",
+          end: "bottom center-=30%",
           scrub: true,
         },
       });

@@ -76,11 +76,15 @@
 }
 
 .wellness-image__item:nth-child(odd) {
-  border: 10px solid #fff;
+  border-top: 10px solid #fff;
+  border-left: 10px solid #fff;
+  border-bottom: 10px solid #fff;
 }
 
 .wellness-image__item:nth-child(even) {
-  border: 10px solid #000;
+  border-top: 10px solid #000;
+  border-left: 10px solid #000;
+  border-bottom: 10px solid #000;
 }
 
 .wellness-image__item:first-child {

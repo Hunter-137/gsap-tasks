@@ -4,33 +4,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: blocks[0],
-      markers: true,
-      start: "bottom center+=322vh",
-      end: "bottom center-=240vh",
-      scrub: true,
-    },
-  });
+    const createTimeline = (trigger, imageBox) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger,
+          start: "bottom center+=322vh",
+          end: "bottom center-=240vh",
+          scrub: true,
+        },
+      });
 
-  tl.to(imageBoxes[0], {
-    clipPath: "inset(0 0 100% 0)",
-    ease: "none",
-  })
+      tl.to(imageBox, {
+        clipPath: "inset(0 0 100% 0)",
+        ease: "none",
+      })
+    }
 
-  const tl2 = gsap.timeline({
-    scrollTrigger: {
-      trigger: blocks[1],
-      markers: true,
-      start: "bottom center+=322vh",
-      end: "bottom center-=240vh",
-      scrub: true,
-    },
-  });
-
-  tl2.to(imageBoxes[1], {
-    clipPath: "inset(0 0 100% 0)",
-    ease: "none",
-  })
+    for (let index = 0; index < blocks.length - 1; index++) {
+      const trigger = blocks[index];
+      const imageBox = imageBoxes[index];
+      createTimeline(trigger, imageBox);
+    }
 });
